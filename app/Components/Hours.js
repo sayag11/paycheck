@@ -175,21 +175,25 @@ module.exports = React.createClass({
     componentDidMount() {
              $( "#start_date").datepicker();
              $( "#end_date").datepicker();
+             var last_day = (new Date().getMonth()+1).toString()+'/31/2016';
+             var first_day = (new Date().getMonth()+1).toString()+'/1/2016';
+             $("#end_date")[0].value = last_day;
+             $("#start_date")[0].value = first_day;
     },
     //componentWillMount() {
     //},
     render: function () {
-        $( "#start_date").datepicker();
-        $( "#end_date").datepicker();
-        var out = <pre id='output'></pre>;
+        //$( "#start_date").datepicker();
+        //$( "#end_date").datepicker();
 
+        var out = <pre id='output'></pre>;
         return (
             <div>
                 <pre>
                     Calendar ID: <input id="calID" size="75" defaultValue="8qknscd1lc0r9m8042ggj61du8@group.calendar.google.com" type="text"/>
                 </pre>
-                Type Start Date: <input id="start_date" defaultValue="03/01/2016" type="text"/>
-                Type End Date : <input id="end_date" defaultValue="03/31/2016" type="text"/>
+                Type Start Date: <input id="start_date" type="text"/>
+                Type End Date : <input id="end_date" type="text"/>
                 Type hourly income: <input id="salary" defaultValue="01" type="text"/>
                 Food Expanses: <input id="food" defaultValue="01" type="text"/>
                 Car Leasing: <input id="car" defaultValue="01" type="text"/>
