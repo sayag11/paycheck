@@ -1,7 +1,7 @@
 {
-  "name": "webpack-starter",
+  "name": "Paycheck",
   "version": "1.0.0",
-  "description": "Bare bones webpack project with a node express server",
+  "description": "a web tool to assist you evaluate your paychecks based on hourly income, using your Google Calender",
   "main": "server/index.js",
   "scripts": {
     "dev-server": "nodemon server/index.js --watch server",
@@ -12,8 +12,8 @@
     "test": "karma start",
     "testing": "karma start --single-run=false"
   },
-  "repository": "git@github.com:cgreening/webpack-starter.git",
-  "author": "Chris Greening",
+  "repository": "git@github.com:sayag11/paycheck.git",
+  "author": "Yehonatan Sayag",
   "license": "MIT",
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
