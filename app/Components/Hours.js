@@ -187,17 +187,13 @@ module.exports = React.createClass({
         return (
             <div>
                 <pre>
-                // TODO instructions for calendar ID
-                Calendar ID: <input id="calID" size="75" defaultValue="8qknscd1lc0r9m8042ggj61du8@group.calendar.google.com" type="text"/>
-                // TODO keyword for calendar
+                    Calendar ID: <input id="calID" size="75" defaultValue="8qknscd1lc0r9m8042ggj61du8@group.calendar.google.com" type="text"/>
                 </pre>
                 Type Start Date: <input id="start_date" type="text"/>
                 Type End Date : <input id="end_date" type="text"/>
                 Type hourly income: <input id="salary" defaultValue="01" type="text"/>
-                //TODO Design and Sibus/TenBis pictures
-                Food Expanses: <input id="food" defaultValue="01" type="text"/
-            //TODO radio buttons: Company Car ( or public transportation )>
-                CaR Leasing: <input id="car" defaultValue="0" type="text"/>
+                Food Expanses: <input id="food" defaultValue="01" type="text"/>
+                Car Leasing: <input id="car" defaultValue="0" type="text"/>
             <input className="btn btn-success" type="button" value="Calculate!" onClick={this.handleClick.bind()}/>
                 {out}
             </div>
