@@ -197,7 +197,7 @@ module.exports = React.createClass({
                 //TODO Design and Sibus/TenBis pictures
                 Food Expanses: <input id="food" defaultValue="01" type="text"/
             //TODO radio buttons: Company Car ( or public transportation )>
-                Car Leasing: <input id="car" defaultValue="0" type="text"/>
+                CaR Leasing: <input id="car" defaultValue="0" type="text"/>
             <input className="btn btn-success" type="button" value="Calculate!" onClick={this.handleClick.bind()}/>
                 {out}
             </div>
