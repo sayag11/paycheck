@@ -194,7 +194,8 @@ module.exports = React.createClass({
                 Type Start Date: <input id="start_date" type="text"/>
                 Type End Date : <input id="end_date" type="text"/>
                 Type hourly income: <input id="salary" defaultValue="01" type="text"/>
-                //TODO Design and Sibus/TenBis pictures
+                 <img src="https://lh3.googleusercontent.com/O0MBDQTyqRQ5YCWzxCApxq1y1aO_p7YOipvXJJ8TMwaNVxq2uakx-SamX1eqe5CM8ytd=w300" width="30" height="30"/>
+                 <img src="https://lh4.ggpht.com/XK5N1cl5nKIgCq63b2FIsovjvOPlrj3TFH43AP0Jm7aA7svQbyzeeE69BHXRkxxXOcHt=w300" width="30" height="30"/>
                 Food Expanses: <input id="food" defaultValue="01" type="text"/>
                 //TODO radio buttons: Company Car ( or public transportation )
                 CAR Leasing: <input id="car" defaultValue="0" type="text"/>
