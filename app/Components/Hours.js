@@ -88,7 +88,6 @@ module.exports = React.createClass({
         var start_date =  new Date($("#start_date")[0].value);
         var end_date =  new Date($("#end_date")[0].value);
             end_date = new Date(end_date.getTime()+24*1000*60*60); // adjust to the END of the day (parsing from the string originally returns start of the day )
-        var leasing = $("#car")[0].value;
         var nis_hr = $("#salary")[0].value;
         var daysDiff = Math.abs(end_date.getTime() - start_date.getTime());
         var days_period = Math.ceil(daysDiff / (1000 * 3600 * 24)) ; //the amount of total days in the period calculated
@@ -153,7 +152,7 @@ module.exports = React.createClass({
                 sum+= transportation;
                 sum+= extra_hours*nis_hr*1.25 + extra_over_two*nis_hr*1.5; // count all hours
                 var rounded_sum = Math.round(sum);
-                var neto_sum = Math.round(this.reduceTaxes(sum,points,food_expanses) -PensionAndEdFundTaxes-leasing); //reduce leasing, taxes AND pension payments that were calculated before from neto hours_count
+                var neto_sum = Math.round(this.reduceTaxes(sum,points,food_expanses) -PensionAndEdFundTaxes); //reduce taxes AND pension payments that were calculated before from neto hours_count
                 $("#output").append('Hours:'+ rounded_hours+ '\n');
                 $("#output").append('Extra Hours 125%:'+ rounded_extra_hours+'\n');
                 $("#output").append('Extra Hours 150%:'+rounded_extra_over_two+'\n');
@@ -194,12 +193,11 @@ module.exports = React.createClass({
                 Type Start Date: <input id="start_date" type="text"/>
                 Type End Date : <input id="end_date" type="text"/>
                 Type hourly income: <input id="salary" defaultValue="01" type="text"/>
-                 <img src="https://lh3.googleusercontent.com/O0MBDQTyqRQ5YCWzxCApxq1y1aO_p7YOipvXJJ8TMwaNVxq2uakx-SamX1eqe5CM8ytd=w300" width="30" height="30"/>
-                 <img src="https://lh4.ggpht.com/XK5N1cl5nKIgCq63b2FIsovjvOPlrj3TFH43AP0Jm7aA7svQbyzeeE69BHXRkxxXOcHt=w300" width="30" height="30"/>
-                Food Expanses: <input id="food" defaultValue="01" type="text"/>
-                //TODO radio buttons: Company Car ( or public transportation )
-                CAR Leasing: <input id="car" defaultValue="0" type="text"/>
-            <input className="btn btn-success" type="button" value="Calculate!" onClick={this.handleClick.bind()}/>
+                Food Expanses:
+                <img src="https://lh3.googleusercontent.com/O0MBDQTyqRQ5YCWzxCApxq1y1aO_p7YOipvXJJ8TMwaNVxq2uakx-SamX1eqe5CM8ytd=w300" width="30" height="30"/>
+                <img src="https://lh4.ggpht.com/XK5N1cl5nKIgCq63b2FIsovjvOPlrj3TFH43AP0Jm7aA7svQbyzeeE69BHXRkxxXOcHt=w300" width="30" height="30"/>
+                <input id="food" defaultValue="01" type="text"/>
+                <input className="btn btn-success" type="button" value="Calculate!" onClick={this.handleClick.bind()}/>
                 {out}
             </div>
         )
