@@ -34,7 +34,6 @@ module.exports = React.createClass({
     keys={[ 'date', 'time','total' ]}
     columns={columns}
     initialData={data}
-    initialData={data}
     initialPageLength={5}
     initialSortBy={{ prop: 'date', order: 'descending' }}
     pageLengthOptions={[ 5, 20, 50 ]}

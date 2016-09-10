@@ -10,10 +10,7 @@ module.exports = React.createClass({
     displayName: 'Hours',
     getInitialState: function() {
         return {
-            show_list: false,
-            dates : [],
-            hours: [],
-            total: []
+            entriesOutput: []
         };
     },
     reduceTaxes: function(bruto,points,food_expanses){
@@ -82,9 +79,7 @@ module.exports = React.createClass({
     },
     listHours: function(){
        $('#output')[0].innerHTML="";
-        var t_dates = [];
-        var t_hours = [];
-        var t_total = [];
+        var entriesOutput = [];
         var start_date =  new Date($("#start_date")[0].value);
         var end_date =  new Date($("#end_date")[0].value);
             end_date = new Date(end_date.getTime()+24*1000*60*60); // adjust to the END of the day (parsing from the string originally returns start of the day )
@@ -132,14 +127,10 @@ module.exports = React.createClass({
                         timeDiff=9;
                     }
                     hours_count+= timeDiff;
-                    t_dates.push(start_time.getDate() +'/' + +(start_time.getMonth()+1)+'/'+start_time.getFullYear()+" :  ");
-                    t_hours.push(start_time.toLocaleTimeString()+' to '+ end_time.toLocaleTimeString()+"  ");
-                    t_total.push('  (Total: '+(Math.round((timeDiff+res) * 100) / 100)+')\n');
-                    $("#output").append( start_time.getDate() +'/' + +(start_time.getMonth()+1)+'/'+start_time.getFullYear()+' :  '+start_time.toLocaleTimeString()+' to '+ end_time.toLocaleTimeString()  + '  (Total: '+(Math.round((timeDiff+res) * 100) / 100)+')\n') // TODO REFORMAT TO READABLE
-                  //  this.setState({ dates : t_dates, hours: t_hours, total: t_total });
+                    entriesOutput.push( start_time.getDate() +'/' + +(start_time.getMonth()+1)+'/'+start_time.getFullYear()+' :  '+start_time.toLocaleTimeString()+' to '+ end_time.toLocaleTimeString()  + '  (Total: '+(Math.round((timeDiff+res) * 100) / 100)+')\n') // TODO REFORMAT TO READABLE
 
                 }
-
+                this.setState({entriesOutput});
                 var food_expanses = parseInt($("#food")[0].value)*months_work;
                 var points = 2.25*months_work;
                 var transportation = 26.40*events.length;
@@ -183,6 +174,11 @@ module.exports = React.createClass({
     //},
     render: function () {
         var out = <pre id='output'></pre>;
+        var rows = [];
+        for (var i=0; i < this.state.entriesOutput.length; i++) {
+            rows.push(<p key={i}>{this.state.entriesOutput[i]}</p>);
+        }
+        console.log(rows)
         return (
             <div>
                 <pre>
@@ -197,8 +193,9 @@ module.exports = React.createClass({
                 <img src="https://lh3.googleusercontent.com/O0MBDQTyqRQ5YCWzxCApxq1y1aO_p7YOipvXJJ8TMwaNVxq2uakx-SamX1eqe5CM8ytd=w300" width="30" height="30"/>
                 <img src="https://lh4.ggpht.com/XK5N1cl5nKIgCq63b2FIsovjvOPlrj3TFH43AP0Jm7aA7svQbyzeeE69BHXRkxxXOcHt=w300" width="30" height="30"/>
                 <input id="food" defaultValue="01" type="text"/>
-                <input className="btn btn-success" type="button" value="Calculate!" onClick={this.handleClick.bind()}/>
-                {out}
+                <input className="btn btn-success" type="button" value="Calculate!" onClick={this.handleClick}/>
+                {rows}
+                    {out}
             </div>
         )
     }
