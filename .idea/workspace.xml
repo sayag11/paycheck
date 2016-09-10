@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9a1e60c-5a28-4ba7-8ab2-067920a297f9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bundle.7cbabd37e15d6ca07798.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bundle.7cbabd37e15d6ca07798.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/App.js" afterPath="$PROJECT_DIR$/app/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Components/Auth.js" afterPath="$PROJECT_DIR$/app/Components/Auth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Components/Header.js" afterPath="$PROJECT_DIR$/app/Components/Header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Components/Hours.js" afterPath="$PROJECT_DIR$/app/Components/Hours.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.html" afterPath="$PROJECT_DIR$/build/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="paycheck.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -888,12 +882,12 @@
       <updated>1472013933334</updated>
       <workItem from="1472013935601" duration="3205000" />
       <workItem from="1472736621286" duration="1966000" />
-      <workItem from="1473426153240" duration="4975000" />
+      <workItem from="1473426153240" duration="5210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10146000" />
+    <option name="totallyTimeSpent" value="10381000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1368" height="877" extended-state="0" />
@@ -907,7 +901,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27388534" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.57707006" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23453997" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
