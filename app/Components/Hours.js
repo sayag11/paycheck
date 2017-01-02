@@ -84,13 +84,6 @@ module.exports = React.createClass({
     listHours: function(){
        $('#output')[0].innerHTML="";
         var entriesOutput = [];
-        // get dates from user input
-        var month =  $("#month")[0].value;
-        var lastDay = ((month < 7 && month % 2 == 1) || (month > 8 && month % 2)) ? '31' : '30';
-        var last_day = month +'/'+ lastDay + '/2017';
-        var first_day = month + '/1/2017';
-        $("#end_date")[0].value = last_day;
-        $("#start_date")[0].value = first_day;
 
         var start_date =  new Date($("#start_date")[0].value);
         var end_date =  new Date($("#end_date")[0].value);
@@ -182,13 +175,23 @@ module.exports = React.createClass({
         this.loadCalendarApi();
     },
 
+    addMonth: function() {
+        // get dates from user input
+        var month =  $("#month")[0].value;
+        var lastDay = ((month < 7 && month % 2 == 1) || (month > 8 && month % 2)) ? '31' : '30';
+        var last_day = month +'/'+ lastDay + '/2017';
+        var first_day = month + '/1/2017';
+        $("#end_date")[0].value = last_day;
+        $("#start_date")[0].value = first_day;
+    },
+
     componentDidMount() {
              $( "#start_date").datepicker();
              $( "#end_date").datepicker();
              // var month =  $("#month")[0].value;
              // var lastDay = ((month < 7 && month % 2 == 1) || (month > 8 && month % 2)) ? '31' : '30';
-             // var last_day = month +'/'+ lastDay + '/2017';
-             // var first_day = month + '/1/2017';
+             // var last_day = '/'+ lastDay + '/2017';
+             // var first_day = '/1/2017';
              // $("#end_date")[0].value = last_day;
              // $("#start_date")[0].value = first_day;
     },
@@ -211,6 +214,7 @@ module.exports = React.createClass({
                 // TODO keyword for calendar
                 </pre>
                 Type Month: <input id="month" type="text"/>
+                <input className="btn btn-warning" type="button" value="Add Month" onClick={this.addMonth}/>
                 Start Date: <input id="start_date" type="text"/>
                 End Date : <input id="end_date" type="text"/>
                 Type hourly income: <input id="salary" defaultValue="01" type="text"/>
