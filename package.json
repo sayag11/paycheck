@@ -21,9 +21,10 @@
     "cors": "^2.7.1",
     "express": "^4.12.4",
     "file-loader": "^0.8.5",
-    "react": "^0.14.7",
+    "react": "^0.14.8",
     "react-data-components": "^0.6.0",
     "react-dom": "^0.14.7",
+    "react-radio-group": "^3.0.1",
     "url-loader": "^0.5.7"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 /**
  * Created by ysayag on 15/02/2016.
  */
-
+import {RadioGroup, Radio} from 'react-radio-group'
 var React = require('react');
 var CALENDAR_ID = ''
 
@@ -10,9 +10,11 @@ module.exports = React.createClass({
     displayName: 'Hours',
     getInitialState: function() {
         return {
-            entriesOutput: []
+            entriesOutput: [],
+            selectedValue: 'other'
         };
     },
+
     reduceTaxes: function(bruto,points,food_expanses){
         const LEVEL0 = 0.1;  const SALARY1 = 5220;
         const LEVEL1 = 0.14; const SALARY2 = 8920;
@@ -65,6 +67,7 @@ module.exports = React.createClass({
         return bruto;
 
     },
+
     CalcSocial_Security_Taxes: function(bruto,bruto_for_tax) {
         var HealthTax = 0; // HealthTax = health tax
         var SocialSecTax = 0; // SocialSecTax = social security tax
@@ -77,9 +80,18 @@ module.exports = React.createClass({
         }
         return HealthTax+SocialSecTax;
     },
+
     listHours: function(){
        $('#output')[0].innerHTML="";
         var entriesOutput = [];
+        // get dates from user input
+        var month =  $("#month")[0].value;
+        var lastDay = ((month < 7 && month % 2 == 1) || (month > 8 && month % 2)) ? '31' : '30';
+        var last_day = month +'/'+ lastDay + '/2017';
+        var first_day = month + '/1/2017';
+        $("#end_date")[0].value = last_day;
+        $("#start_date")[0].value = first_day;
+
         var start_date =  new Date($("#start_date")[0].value);
         var end_date =  new Date($("#end_date")[0].value);
             end_date = new Date(end_date.getTime()+24*1000*60*60); // adjust to the END of the day (parsing from the string originally returns start of the day )
@@ -87,9 +99,10 @@ module.exports = React.createClass({
         var daysDiff = Math.abs(end_date.getTime() - start_date.getTime());
         var days_period = Math.ceil(daysDiff / (1000 * 3600 * 24)) ; //the amount of total days in the period calculated
         var months_work = Math.ceil(days_period/31);
+
         var request = gapi.client.calendar.events.list({
 
-            'calendarId': $("#calID")[0].value, // for main calender : 'primary'
+            'calendarId': this.state.selectedValue == 'other' ? $('#calID')[0].value : 'primary' , // for main calender : 'primary'
             'timeMin': start_date.toJSON(),
             'timeMax': end_date.toJSON(),
             'showDeleted': false,
@@ -156,43 +169,55 @@ module.exports = React.createClass({
             }
         });
     },
+
     loadCalendarApi: function(){
         gapi.client.load('calendar', 'v3', this.listHours);
     },
-    handleClick: function(){
+
+    handleChangeCalendar: function(value){
+        this.setState({selectedValue: value});
+    },
+
+    handleClick: function() {
         this.loadCalendarApi();
-        },
+    },
+
     componentDidMount() {
              $( "#start_date").datepicker();
              $( "#end_date").datepicker();
-             var last_day = (new Date().getMonth()+1).toString()+'/31/2016';
-             var first_day = (new Date().getMonth()+1).toString()+'/1/2016';
-             $("#end_date")[0].value = last_day;
-             $("#start_date")[0].value = first_day;
+             // var month =  $("#month")[0].value;
+             // var lastDay = ((month < 7 && month % 2 == 1) || (month > 8 && month % 2)) ? '31' : '30';
+             // var last_day = month +'/'+ lastDay + '/2017';
+             // var first_day = month + '/1/2017';
+             // $("#end_date")[0].value = last_day;
+             // $("#start_date")[0].value = first_day;
     },
-    //componentWillMount() {
-    //},
+
     render: function () {
         var out = <pre id='output'></pre>;
         var rows = [];
         for (var i=0; i < this.state.entriesOutput.length; i++) {
             rows.push(<p key={i}>{this.state.entriesOutput[i]}</p>);
         }
-        console.log(rows)
         return (
             <div>
                 <pre>
                 // TODO instructions for calendar ID
-                    Calendar ID: <input id="calID" size="75" defaultValue="8qknscd1lc0r9m8042ggj61du8@group.calendar.google.com" type="text"/>
+                    <RadioGroup selectedValue={this.state.selectedValue} onChange={this.handleChangeCalendar}>
+                          <Radio type="radio" name="primary" value="primary" />primary
+                          <Radio type="radio" name="other" value="other" />other
+                    </RadioGroup>
+                    { this.state.selectedValue == 'other' && <input id="calID" size="75" defaultValue="8qknscd1lc0r9m8042ggj61du8@group.calendar.google.com" type="text"/> }
                 // TODO keyword for calendar
                 </pre>
-                Type Start Date: <input id="start_date" type="text"/>
-                Type End Date : <input id="end_date" type="text"/>
+                Type Month: <input id="month" type="text"/>
+                Start Date: <input id="start_date" type="text"/>
+                End Date : <input id="end_date" type="text"/>
                 Type hourly income: <input id="salary" defaultValue="01" type="text"/>
                 Food Expanses:
                 <img src="https://lh3.googleusercontent.com/O0MBDQTyqRQ5YCWzxCApxq1y1aO_p7YOipvXJJ8TMwaNVxq2uakx-SamX1eqe5CM8ytd=w300" width="30" height="30"/>
                 <img src="https://lh4.ggpht.com/XK5N1cl5nKIgCq63b2FIsovjvOPlrj3TFH43AP0Jm7aA7svQbyzeeE69BHXRkxxXOcHt=w300" width="30" height="30"/>
-                <input id="food" defaultValue="01" type="text"/>
+                <input id="food" defaultValue="1200" type="text"/>
                 <input className="btn btn-success" type="button" value="Calculate!" onClick={this.handleClick}/>
                 {rows}
                     {out}
